@@ -8,10 +8,12 @@ export default class GameFiled extends Component{
     }
 
     handleClick(index){
-        this.state.current_state[index] = this.state.player === 1 ? 'X' : 'O';
-        this.setState({current_state: this.state.current_state,
-            player: this.state.player === 1 ? 2 : 1
-        });
+        if(this.state.current_state[index] === ' '){
+            this.state.current_state[index] = this.state.player === 1 ? 'X' : 'O';
+            this.setState({current_state: this.state.current_state,
+                player: this.state.player === 1 ? 2 : 1
+            });
+        }
     
     }
 
