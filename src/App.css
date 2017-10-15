@@ -3,10 +3,14 @@
 .field{
   margin: auto;
   width: 300px;
-  margin-top: 100px;
+  height: 300px;
+  border: none;
 }
 
 .square{
+  display: inline-block;
   width: 100px;
   height: 100px;
+  margin: 0;
+  padding: 0;
 }
