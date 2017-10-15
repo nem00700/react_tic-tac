@@ -5,6 +5,6 @@ export default class Square extends Component{
 
 
     render(){
-        return <button></button>
+        return <button className="square"></button>
     }
 }

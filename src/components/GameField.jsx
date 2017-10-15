@@ -8,11 +8,11 @@ export default class GameFiled extends Component{
         const squares = [];
 
         for(let i = 0; i < 9; i++){
-            squares.push(<Square />)
+            squares.push(<Square key={i} />)
         }
 
 
-        return <div>
+        return <div className="field">
             {squares}
         </div> ;
     }
