@@ -23,10 +23,8 @@ export default class GameField extends Component{
             if(this.state.current_state[index] === ' '){
                 var field = this.state.current_state;
                 field[index] = this.state.player === 1 ? 'X' : 'O';
-                this.setState({current_state: field});
+                this.setState({current_state: field, player: this.state.player === 1 ? 2 : 1});
                 this.checkWinner(this.state.player);
-
-                this.setState({player: ((this.state.player === 1) ? 2 : 1)});
             }
             
             if(this.props.vsComputer){
@@ -50,11 +48,8 @@ export default class GameField extends Component{
         
         var field = this.state.current_state;
         field[randIndex] = 'O'
-        this.setState({current_state: field});
+        this.setState({current_state: field, player: 1});
         this.checkWinner(2);
-        this.setState({player: 1});
-        
-    
     }
 
     getRandomInt(min, max) {
