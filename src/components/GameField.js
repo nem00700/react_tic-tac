@@ -34,20 +34,18 @@ export default class GameField extends Component{
     }
 
     computerStep(){
-        var randIndex = this.getRandomInt(0, 9);
-        var checkEmptySquare = false;
+        var emptySquares = [];
         for(let i = 0; i < 9; i++){
             if(this.state.current_state[i] === ' ')
-                checkEmptySquare = true;
+                emptySquares.push(i);
         }
-        if(!checkEmptySquare)
+        if(emptySquares.length === 0)
             return;
 
-        while(this.state.current_state[randIndex] !== ' ')
-            randIndex = this.getRandomInt(0, 9);
+        var randIndex = this.getRandomInt(0, emptySquares.length);
         
         var field = this.state.current_state;
-        field[randIndex] = 'O'
+        field[emptySquares[randIndex]] = 'O'
         this.setState({current_state: field, player: 1});
         this.checkWinner(2);
     }
