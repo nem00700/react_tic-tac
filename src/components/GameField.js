@@ -19,26 +19,53 @@ export default class GameField extends Component{
     }
 
     handleClick(index){
-        if(!this.state.winner){
-            if(!this.props.vsComputer || this.state.player == 1){
-                if(this.state.current_state[index] === ' '){
-                    this.state.current_state[index] = this.state.player === 1 ? 'X' : 'O';
-                    if(this.checkWinner(this.state.player === 1 ? 1 : 2)){
-                        this.setState({winner: true});
-                    }
-                    this.setState({current_state: this.state.current_state,
-                        player: this.state.player === 1 ? 2 : 1
-                    });
+        if(!this.state.winner){}
+            if(this.state.current_state[index] === ' '){
+                this.state.current_state[index] = this.state.player === 1 ? 'X' : 'O';
+                if(this.checkWinner(this.state.player)){
+                    this.setState({winner: true});
                 }
-            }else{
+                this.setState({current_state: this.state.current_state,
+                    player: this.state.player === 1 ? 2 : 1
+                });
+            }
+
+
+            if(this.props.vsComputer || this.state.player == 2){
                 this.computerStep();
             }
-        }
+            
+        
     }
 
     computerStep(){
+        var randIndex = this.getRandomInt(0, 9);
+        var checkEmptySquare = false;
+        for(let i = 0; i < 9; i++){
+            if(this.state.current_state[i] === ' ')
+                checkEmptySquare = true;
+        }
+        if(!checkEmptySquare)
+            return;
 
+        while(this.state.current_state[randIndex] !== ' ')
+            randIndex = this.getRandomInt(0, 9);
+        
+
+        this.state.current_state[randIndex] = '0';
+        if(this.checkWinner(this.state.player)){
+            this.setState({winner: true});
+        }
+        this.setState({current_state: this.state.current_state
+        });
+        this.setState({player: 1});
+        
+    
     }
+
+    getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
 
     checkWinner(player){
         const cur_sign = player === 1 ? 'X' : 'O';
