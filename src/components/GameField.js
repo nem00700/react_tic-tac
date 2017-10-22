@@ -15,27 +15,24 @@ export default class GameField extends Component{
             [0, 4, 8], 
             [2, 4, 6]
         ],
-        winner: false
+        winner: 0
     }
 
     handleClick(index){
-        if(!this.state.winner){}
+        if(this.state.winner === 0){
             if(this.state.current_state[index] === ' '){
-                this.state.current_state[index] = this.state.player === 1 ? 'X' : 'O';
-                if(this.checkWinner(this.state.player)){
-                    this.setState({winner: true});
-                }
-                this.setState({current_state: this.state.current_state,
-                    player: this.state.player === 1 ? 2 : 1
-                });
-            }
+                var field = this.state.current_state;
+                field[index] = this.state.player === 1 ? 'X' : 'O';
+                this.setState({current_state: field});
+                this.checkWinner(this.state.player);
 
-
-            if(this.props.vsComputer || this.state.player == 2){
-                this.computerStep();
+                this.setState({player: ((this.state.player === 1) ? 2 : 1)});
             }
             
-        
+            if(this.props.vsComputer){
+                this.computerStep();
+            }
+        }    
     }
 
     computerStep(){
@@ -51,13 +48,10 @@ export default class GameField extends Component{
         while(this.state.current_state[randIndex] !== ' ')
             randIndex = this.getRandomInt(0, 9);
         
-
-        this.state.current_state[randIndex] = '0';
-        if(this.checkWinner(this.state.player)){
-            this.setState({winner: true});
-        }
-        this.setState({current_state: this.state.current_state
-        });
+        var field = this.state.current_state;
+        field[randIndex] = 'O'
+        this.setState({current_state: field});
+        this.checkWinner(2);
         this.setState({player: 1});
         
     
@@ -74,15 +68,17 @@ export default class GameField extends Component{
         for(let i = 0; i < this.state.winner_combination.length; i++){
             if(cur_state[combination[i][0]] === cur_sign && 
                 cur_state[combination[i][1]] === cur_sign &&
-                cur_state[combination[i][2]] === cur_sign)
-                return true;
+                cur_state[combination[i][2]] === cur_sign){
+                    this.setState({winner: player})
+                    return true;
+                }
         }
         return false;
     }
 
 
     render(){
-        const winner = this.state.winner ? 'Player ' + (this.state.player === 1 ? 2 : 1) + ' won' : '';
+        const winner = this.state.winner !== 0 ? 'Player ' + (this.state.winner) + ' won' : '';
         const squares = [];
 
         for(let i = 0; i < 9; i++){
