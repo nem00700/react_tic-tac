@@ -20,16 +20,24 @@ export default class GameField extends Component{
 
     handleClick(index){
         if(!this.state.winner){
-            if(this.state.current_state[index] === ' '){
-                this.state.current_state[index] = this.state.player === 1 ? 'X' : 'O';
-                if(this.checkWinner(this.state.player === 1 ? 1 : 2)){
-                    this.setState({winner: true});
+            if(!this.props.vsComputer || this.state.player == 1){
+                if(this.state.current_state[index] === ' '){
+                    this.state.current_state[index] = this.state.player === 1 ? 'X' : 'O';
+                    if(this.checkWinner(this.state.player === 1 ? 1 : 2)){
+                        this.setState({winner: true});
+                    }
+                    this.setState({current_state: this.state.current_state,
+                        player: this.state.player === 1 ? 2 : 1
+                    });
                 }
-                this.setState({current_state: this.state.current_state,
-                    player: this.state.player === 1 ? 2 : 1
-                });
+            }else{
+                this.computerStep();
             }
         }
+    }
+
+    computerStep(){
+
     }
 
     checkWinner(player){
