@@ -71,7 +71,7 @@ export default class GameField extends Component{
 
 
     render(){
-        const winner = this.state.winner !== 0 ? 'Player ' + (this.state.winner) + ' won' : '';
+        const winner = this.state.winner !== 0 ? 'Player ' + (this.state.winner) + ' win' : '';
         const squares = [];
 
         for(let i = 0; i < 9; i++){
@@ -85,7 +85,8 @@ export default class GameField extends Component{
 
         return <div className="field">
             {squares}
-            <div>{winner}</div>
+            {winner != 0 ? <div className='winner-field'>{winner}</div> : ''}
+            
         </div> ;
     }
 }

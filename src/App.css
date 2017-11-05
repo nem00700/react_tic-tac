@@ -2,7 +2,6 @@ body{
   background-color: blue;
 }
 
-
 nav{
   text-transform: uppercase;
   border: 2px solid black;
@@ -34,6 +33,7 @@ a{
 
 .field{
   margin: auto;
+  margin-top: 100px;
   width: 300px;
   height: 300px;
   border: none;
@@ -46,4 +46,16 @@ a{
   margin: 0;
   padding: 0;
   font-size: 40px;
+}
+
+.winner-field{
+  margin-top: 20px;
+  padding: 10px;
+  text-transform: uppercase;
+  color: #514ED9;
+  font-size: 25px;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  height: 30px;
 }
