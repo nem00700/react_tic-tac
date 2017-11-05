@@ -1,4 +1,36 @@
+body{
+  background-color: blue;
+}
 
+
+nav{
+  text-transform: uppercase;
+  border: 2px solid black;
+  padding: 10px;
+  width: 200px;
+  margin: auto;
+  background-color: black;
+  text-align: center;
+  margin-top: 10px;
+}
+
+nav:hover{
+  box-shadow: 0 0 3px 0 black;
+  cursor: pointer;
+}
+
+nav:hover{
+  color: #5FBDCE;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.nav-block{
+  margin-top: 200px;
+}
 
 .field{
   margin: auto;
