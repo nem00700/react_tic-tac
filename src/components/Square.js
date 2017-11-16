@@ -8,6 +8,7 @@ export default class Square extends Component{
             onClick={this.props.handleClick.bind(null, this.props.index)}
             className="square"
             value={this.props.val}
+            style={{width: this.props.squaresWidth + '%'}}
         />;
     }
 }
