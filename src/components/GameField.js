@@ -2,20 +2,53 @@ import React, {Component} from 'react';
 import Square from './Square';
 
 export default class GameField extends Component{
+
     state = {
         current_state: [' ',' ',' ',' ',' ',' ',' ',' ',' '],
         player: 1,
         winner_combination: [
-            [0, 1, 2], 
-            [3, 4, 5], 
-            [6, 7, 8], 
-            [0, 3, 6], 
-            [1, 4, 7], 
-            [2, 5, 8], 
-            [0, 4, 8], 
-            [2, 4, 6]
         ],
         winner: 0
+    }
+
+
+    componentDidMount(){
+        let temp_arr = [];
+        let temp_winner_arr = []
+        for(var i = 0; i < 3; i++){
+            for(var j = 0; j < 3; j++){
+                if(i == j)
+                    temp_arr.push(i + 3*j);
+            }
+        }
+        temp_winner_arr.push(temp_arr);
+        temp_arr = [];
+
+        for(let i = 0; i < 3; i++){
+            for(let j = 0; j < 3; j++){
+                if(2 - i == j)
+                    temp_arr.push(i + 3*j);
+            }
+        }
+        temp_winner_arr.push(temp_arr.reverse());
+        temp_arr = [];
+
+        for(let i = 0; i < 3; i++){
+            for(let j = 0; j < 3; j++){
+                temp_arr.push(3*i + j);
+            }
+            temp_winner_arr.push(temp_arr);
+            temp_arr = [];
+        }
+
+        for(let i = 0; i < 3; i++){
+            for(let j = 0; j < 3; j++){
+                    temp_arr.push(i + 3*j);
+            }
+            temp_winner_arr.push(temp_arr);
+            temp_arr = [];
+        }
+        this.setState({winner_combination: temp_winner_arr});
     }
 
     handleClick(index){
