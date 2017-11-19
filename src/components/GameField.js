@@ -13,8 +13,6 @@ export default class GameField extends Component{
 
     componentDidMount(){
         const { size } = this.props;
-
-
         let temp_state = [];
 
         for(let i = 0; i < size * size; i++)
@@ -22,9 +20,6 @@ export default class GameField extends Component{
 
         this.setState({current_state: temp_state});
 
-
-
-        
         let temp_arr = [];
         let temp_winner_arr = []
         for(var i = 0; i < size; i++){
@@ -61,7 +56,6 @@ export default class GameField extends Component{
             temp_arr = [];
         }
         this.setState({winner_combination: temp_winner_arr});
-        console.log(temp_winner_arr);
     }
 
     handleClick(index){

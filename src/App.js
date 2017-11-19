@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import VsPerson from "./components/VsPerson";
+import VsComputer from "./components/VsComputer";
+import Menu from './components/Menu';
 
 
 class App extends Component {
   render() {
-    return <div className='nav-block'>
-        <Link to="/1vs1"><nav>1 vs 1</nav></Link>
-        <Link to="/vscomputer"><nav>1 vs Computer</nav></Link>
-      </div>;
+    return  <Router>
+      <Switch>
+          <Route exact path="/" component={Menu} />
+          <Route path="/1vs1" component={VsPerson} />
+          <Route path="/vscomputer" component={VsComputer} />
+      </Switch>
+    </Router> 
   }
 }
 
