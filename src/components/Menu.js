@@ -4,20 +4,17 @@ import { connect } from 'react-redux';
 import { changeGamefieldSize } from '../AC';
 
 
-class Menu extends Component {
-    state = {
-        size: 3,
-    }
-
+export class Menu extends Component {
     handleChange(event){
-        changeGamefieldSize(event.target.value);
+        this.props.changeGamefieldSize(event.target.value);
     }
-
 
     render() {
-        console.log(this.props);
+        const { size } = this.props;
+        console.log(size);
+
         return <div className='nav-block'>
-            <input val={this.state.size} onChange={this.handleChange.bind(this)} />
+            <input val={this.props.size} onChange={this.handleChange.bind(this)} />
             <Link to="/1vs1"><nav>1 vs 1</nav></Link>
             <Link to="/vscomputer"><nav>1 vs Computer</nav></Link>
         </div>;
@@ -26,7 +23,7 @@ class Menu extends Component {
 
 export default connect(
     state => ({
-        s: state
+        size: state.game.gameFieldSize
     }),
-    {changeGamefieldSize}
+    { changeGamefieldSize }
 )(Menu);

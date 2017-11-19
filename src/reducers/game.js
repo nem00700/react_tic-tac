@@ -4,12 +4,14 @@ const initialState = {
     gameFieldSize: 3,
 }
 
-export function game(state = initialState, action){
+export default function game(state = initialState, action){
     switch(action.type){
         case CHANGE_GAMEFIELD_SIZE:
             return {
                 ...state,
-                gameFieldSize: action.gameFieldSize
+                gameFieldSize: action.size
             }
+        default: 
+            return state;
     }
 }
