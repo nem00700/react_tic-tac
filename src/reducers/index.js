@@ -1,15 +1,6 @@
-import { CHANGE_GAMEFIELD_SIZE } from "../constants";
+import { combineReducers } from 'redux';
+import { game } from './game';
 
-const initialState = {
-    gameFieldSize: 3,
-}
-
-export default function game(state = initialState, action){
-    switch(action.type){
-        case CHANGE_GAMEFIELD_SIZE:
-            return {
-                ...state,
-                gameFieldSize: action.gameFieldSize
-            }
-    }
-}
+export default combineReducers({
+    game: game
+});
