@@ -11,7 +11,6 @@ export class Menu extends Component {
 
     render() {
         const { size } = this.props;
-        console.log(size);
 
         return <div className='nav-block'>
             <input val={this.props.size} onChange={this.handleChange.bind(this)} />

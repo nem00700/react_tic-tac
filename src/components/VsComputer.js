@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import GameField from './GameField';
+import { connect } from 'react-redux';
 
-export default class VsComputer extends Component {
+class VsComputer extends Component {
 
     render(){
-        return <GameField vsComputer={true} size={5} />;
+        const { size } = this.props;
+
+        return <GameField vsComputer={true} size={size} />;
     }
 }
+
+export default connect(
+    state => ({
+        size: state.game.gameFieldSize,
+    })
+)(VsComputer);
