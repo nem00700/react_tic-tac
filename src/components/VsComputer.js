@@ -1,17 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GameField from './GameField';
 import PropTypes from "prop-types";
 
-class VsComputer extends Component {
-    static contextTypes = {
-        size: PropTypes.string,
-    };
+const VsComputer = (a = {}, context ) => 
+    <GameField vsComputer={true} size={context.size} />;
 
-    render(){
-        const { size } = this.context;
-
-        return <GameField vsComputer={true} size={size} />;
-    }
+VsComputer.contextTypes = {
+    size: PropTypes.string,
 }
 
 export default VsComputer;
