@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Square from './Square';
+import PropTypes from "prop-types";
 
-export default class GameField extends Component{
+class GameField extends Component{
 
     state = {
         current_state: [],
@@ -142,3 +143,10 @@ export default class GameField extends Component{
         </div> ;
     }
 }
+
+GameField.PropTypes = {
+    vsComputer: PropTypes.bool,
+    size: PropTypes.string,
+}
+
+export default GameField;
