@@ -29,6 +29,11 @@ a{
 
 .nav-block{
   margin-top: 200px;
+  text-align: center;
+}
+
+.nav-block input{
+  width: 220px;
 }
 
 .field{
