@@ -13,7 +13,7 @@ export class Menu extends Component {
         const { size } = this.props;
 
         return <div className='nav-block'>
-            <input val={this.props.size} onChange={this.handleChange.bind(this)} />
+            <input value={this.props.size} onChange={this.handleChange.bind(this)} />
             <Link to="/1vs1"><nav>1 vs 1</nav></Link>
             <Link to="/vscomputer"><nav>1 vs Computer</nav></Link>
         </div>;
